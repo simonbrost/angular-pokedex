@@ -13,36 +13,23 @@ import { PokemonService } from '../pokeservice.service';
 export class LandingPageComponent implements OnInit {
   pokemonService = inject(PokemonService);
   pokemons: any[] = [];
-  
 
-  constructor() {}
+
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.getPokemon();
+    this.fetchPokemonData();
   }
 
-  getPokemon(): void {
+  fetchPokemonData(): void {
     this.pokemonService.getPokemon().subscribe(data => {
-      this.pokemons = data.results;
-      this.loadCards();
-      console.log(this.pokemons);
+      const pokemonUrls = data.results.map((pokemon: any) => pokemon.url);
+      pokemonUrls.forEach((url: string) => {
+        this.pokemonService.getPokemonDetails(url).subscribe(pokemonData => {
+          this.pokemons.push(pokemonData);
+        });
+      });
     });
-  }
-
-  loadCards(): void {
-    // Nicht benötigt, da die Karten dynamisch im HTML-Template erstellt werden
-  }
-  
-  getTypeColor(type: string): string {
-    const typeColors: { [key: string]: string } = {
-      'fire': '#be282879',
-      'water': '#328bdd79',
-      'normal': '#becbd679',
-      'bug': '#87ffaf8f',
-      'grass': '#9bff878f',
-      // Add more types and colors as needed
-    };
-  
-    return typeColors[type];
   }
 }
