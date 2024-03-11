@@ -1,1 +1,23 @@
-<app-card></app-card>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let pokemon of pokemons">
+        <div *ngIf="pokemon" class="card mb-3" [ngStyle]="{ 'background-color': getTypeColor(pokemon.types && pokemon.types.length > 0 ? pokemon.types[0].type.name : null) }">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img *ngIf="pokemon.sprites && pokemon.sprites.other && pokemon.sprites.other['official-artwork'] && pokemon.sprites.other['official-artwork'].front_default" [src]="pokemon.sprites.other['official-artwork'].front_default" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ pokemon.name }}</h5>
+                <div class="card-text">
+                  <div class="typeBadge" *ngFor="let type of pokemon.types">{{ type.type.name }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

@@ -11,7 +11,7 @@ export class PokemonService {
 
   constructor(private http: HttpClient) {}
 
-  getPokemons(): Observable<any> {
+  getPokemon(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
 }
