@@ -1,18 +1,39 @@
 <div class="larger-card" *ngIf="showLargerCard">
   <div class="overlay" (click)="closeLargerCard()"></div>
   <div class="content" [style.background-color]="typeColor">
-    <h5 class="card-title">{{ selectedPokemon.name }}</h5>
-    <div *ngIf="selectedPokemon.types && selectedPokemon.types.length > 0">
+    <h5 class="card-title">#{{ selectedPokemon.id }} {{ capitalizeFirstLetter(selectedPokemon.name) }}</h5>
+    <div class="type-container" *ngIf="selectedPokemon.types && selectedPokemon.types.length > 0">
       <div class="btn" *ngFor="let type of selectedPokemon.types">{{ type.type.name }}</div>
-    <img 
-    *ngIf="selectedPokemon.sprites 
-    && selectedPokemon.sprites.other 
-    && selectedPokemon.sprites.other['official-artwork'] 
-    && selectedPokemon.sprites.other['official-artwork'].front_default" 
-    [src]="selectedPokemon.sprites.other['official-artwork'].front_default" 
-    class="card-img-top" alt="..."
-    >
+      <img
+        *ngIf="selectedPokemon.sprites && selectedPokemon.sprites.other && selectedPokemon.sprites.other['official-artwork'] && selectedPokemon.sprites.other['official-artwork'].front_default"
+        [src]="selectedPokemon.sprites.other['official-artwork'].front_default" class="card-img-top" alt="...">
+
+      <!-- details -->
+
+      <div class="about-container">
+        <table class="about-table table">
+          <tr>
+            <td>Species</td>
+            <td>{{ selectedPokemon.species.name }}</td>
+          </tr>
+          <tr>
+            <td>Height</td>
+            <td>{{ selectedPokemon.height }}</td>
+          </tr>
+          <tr>
+            <td>Weight</td>
+            <td>{{ selectedPokemon.weight }}</td>
+          </tr>
+          <tr>
+            <td>Abilities</td>
+            <td>
+              <ul>
+                <li *ngFor="let ability of selectedPokemon.abilities">{{ ability.ability.name }}</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
-
-  

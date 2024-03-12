@@ -24,6 +24,11 @@ export class CardComponent {
       this.typeColor = await this.pokemonService.getTypeColor(typeName);
     }
   }
+
+  capitalizeFirstLetter(word: string): string {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
   onSelectPokemon(): void {
     this.pokemonSelected.emit(this.pokemon); // Ausgewähltes Pokémon an Elternkomponente übergeben
   }

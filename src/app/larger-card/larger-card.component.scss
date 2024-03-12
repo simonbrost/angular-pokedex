@@ -29,11 +29,11 @@
 }
 
 .content {
-  width: 80vw;
-  height: 80vh;
-  background-color: white;
+  width: 70vw;
+  height: 100vh;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -42,4 +42,37 @@
   max-width: 100%;
   max-height: 100%;
   border-radius: 10px;
+}
+
+.card-title {
+  font-size: 4rem;
+}
+.type-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.about-container {
+  width: 40vw;
+  
+
+  .table {
+    text-align: center;
+    background-color: rgba(240, 248, 255, 0.669);
+
+    tr {
+      border: 1px solid;
+    }
+  }
+}
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about-table {
+  --bs-table-bg: transparent !important; /* Überschreibt die Bootstrap-Variable für die Tabellenhintergrundfarbe */
 }

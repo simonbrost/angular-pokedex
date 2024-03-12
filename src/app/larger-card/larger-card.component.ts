@@ -15,9 +15,14 @@ export class LargerCardComponent {
   @Input() selectedPokemon: any; // Das ausgewählte Pokémon-Objekt
   @Input() typeColor: string | undefined;
 
+  capitalizeFirstLetter(word: string): string {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
   ngOnChanges(changes: SimpleChange): void {
     if ('selectedPokemon' in changes && this.selectedPokemon) {
       this.showLargerCard = true;
+      console.log(this.selectedPokemon)
     }
   }
 
