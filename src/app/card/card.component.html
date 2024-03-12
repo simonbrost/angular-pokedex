@@ -1,4 +1,4 @@
-<div class="card" [style.background-color]="typeColor" style="width: 18rem;">
+<div class="card" (click)="onSelectPokemon()" [style.background-color]="typeColor" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">{{ pokemon.name }}</h5>
     <div *ngIf="pokemon.types && pokemon.types.length > 0">

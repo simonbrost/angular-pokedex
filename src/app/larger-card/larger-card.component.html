@@ -1,0 +1,18 @@
+<div class="larger-card" *ngIf="showLargerCard">
+  <div class="overlay" (click)="closeLargerCard()"></div>
+  <div class="content" [style.background-color]="typeColor">
+    <h5 class="card-title">{{ selectedPokemon.name }}</h5>
+    <div *ngIf="selectedPokemon.types && selectedPokemon.types.length > 0">
+      <div class="btn" *ngFor="let type of selectedPokemon.types">{{ type.type.name }}</div>
+    <img 
+    *ngIf="selectedPokemon.sprites 
+    && selectedPokemon.sprites.other 
+    && selectedPokemon.sprites.other['official-artwork'] 
+    && selectedPokemon.sprites.other['official-artwork'].front_default" 
+    [src]="selectedPokemon.sprites.other['official-artwork'].front_default" 
+    class="card-img-top" alt="..."
+    >
+  </div>
+</div>
+
+  

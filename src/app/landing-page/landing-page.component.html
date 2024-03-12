@@ -1,6 +1,10 @@
 <div class="container">
-      <div *ngFor="let pokemon of pokemons">
-        <app-card [pokemon]="pokemon"></app-card>
-      </div>
+  <div *ngFor="let pokemon of pokemons">
+    <app-card [pokemon]="pokemon" (pokemonSelected)="onPokemonSelected($event)"></app-card>
   </div>
-  
+</div>
+
+<app-larger-card *ngIf="showLargerCard" [selectedPokemon]="selectedPokemon" [typeColor]="typeColor"></app-larger-card>
+
+
+
