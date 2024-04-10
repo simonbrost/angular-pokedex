@@ -12,7 +12,7 @@ import { PokemonService } from '../pokeservice.service';
 export class LargerCardComponent {
   pokemonService = inject(PokemonService);
   @Input() showLargerCard: boolean = false;
-  @Input() selectedPokemon: any; // Das ausgewählte Pokémon-Objekt
+  @Input() selectedPokemon: any;
   @Input() typeColor: string | undefined;
 
   capitalizeFirstLetter(word: string): string {

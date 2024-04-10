@@ -1,8 +1,27 @@
-.card{
+.card {
     margin: 1rem;
 }
+
 .btn {
-    border-color: rgba(0,0,0,0.5);
+    border-color: rgba(0, 0, 0, 0.5);
     background-color: rgba(0, 0, 0, 0.1);
     margin: 0.5rem;
+}
+
+.card-headline-container {
+    display: flex;
+    align-items: center;
+
+    .card-headline-number {
+        font-size: 25px;
+        color: #333;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+    .card-headline-name {
+        font-size: 35px;
+        margin-left: auto;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        color: #222; 
+    }
 }

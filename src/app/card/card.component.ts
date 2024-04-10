@@ -13,7 +13,8 @@ import { PokemonService } from '../pokeservice.service';
 export class CardComponent {
   pokemonService = inject(PokemonService);
   @Input() pokemon: any;
-  @Output() pokemonSelected: EventEmitter<any> = new EventEmitter<any>(); // Ereignis für ausgewähltes Pokémon
+  @Input() pokemonNumber: number | undefined;
+  @Output() pokemonSelected: EventEmitter<any> = new EventEmitter<any>();
   typeColor: string | undefined;
   
   constructor() {}

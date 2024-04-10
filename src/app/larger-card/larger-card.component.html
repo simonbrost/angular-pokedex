@@ -1,5 +1,6 @@
 <div class="larger-card" *ngIf="showLargerCard">
   <div class="overlay" (click)="closeLargerCard()"></div>
+  <button id="prev-btn" type="button" class="btn-bd-primary">&#8701;</button>
   <div class="content" [style.background-color]="typeColor">
     <h5 class="card-title">#{{ selectedPokemon.id }} {{ capitalizeFirstLetter(selectedPokemon.name) }}</h5>
     <div class="type-container" *ngIf="selectedPokemon.types && selectedPokemon.types.length > 0">
@@ -7,9 +8,6 @@
       <img
         *ngIf="selectedPokemon.sprites && selectedPokemon.sprites.other && selectedPokemon.sprites.other['official-artwork'] && selectedPokemon.sprites.other['official-artwork'].front_default"
         [src]="selectedPokemon.sprites.other['official-artwork'].front_default" class="card-img-top" alt="...">
-
-      <!-- details -->
-
       <div class="about-container">
         <table class="about-table table">
           <tr>
@@ -36,4 +34,5 @@
       </div>
     </div>
   </div>
+  <button id="nect-btn" type="button" class="btn-bd-primary">&#8702;</button>
 </div>
