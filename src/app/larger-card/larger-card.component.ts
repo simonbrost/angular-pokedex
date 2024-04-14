@@ -1,3 +1,5 @@
+//larger-card.component.ts
+
 import { CommonModule } from '@angular/common';
 import { Component, Input, SimpleChange, inject } from '@angular/core';
 import { PokemonService } from '../pokeservice.service';
@@ -14,6 +16,7 @@ export class LargerCardComponent {
   @Input() showLargerCard: boolean = false;
   @Input() selectedPokemon: any;
   @Input() typeColor: string | undefined;
+  @Input() pokemons: any[] = [];
 
   capitalizeFirstLetter(word: string): string {
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -29,5 +32,24 @@ export class LargerCardComponent {
   closeLargerCard() {
     this.showLargerCard = false;
   }
+
+  showNext(): void {
+    const currentIndex = this.pokemons.findIndex(pokemon => pokemon.id === this.selectedPokemon.id);
+    const nextPokemon = this.pokemons[currentIndex + 1];
+    if (nextPokemon) {
+      this.selectedPokemon = nextPokemon;
+      // this.updateTypeColorForSelectedPokemon();
+    }
+  }
+
+  showPrev(): void {
+    const currentIndex = this.pokemons.findIndex(pokemon => pokemon.id === this.selectedPokemon.id);
+    const previousPokemon = this.pokemons[currentIndex - 1];
+    if (previousPokemon) {
+      this.selectedPokemon = previousPokemon;
+      // this.updateTypeColorForSelectedPokemon();
+    }
+  }
+
   constructor() { }
 }
