@@ -1,5 +1,3 @@
-//larger-card.component.ts
-
 import { CommonModule } from '@angular/common';
 import { Component, Input, SimpleChange, inject } from '@angular/core';
 import { PokemonService } from '../pokeservice.service';
@@ -38,7 +36,7 @@ export class LargerCardComponent {
     const nextPokemon = this.pokemons[currentIndex + 1];
     if (nextPokemon) {
       this.selectedPokemon = nextPokemon;
-      // this.updateTypeColorForSelectedPokemon();
+      this.updateTypeColorForSelectedPokemon();
     }
   }
 
@@ -47,7 +45,20 @@ export class LargerCardComponent {
     const previousPokemon = this.pokemons[currentIndex - 1];
     if (previousPokemon) {
       this.selectedPokemon = previousPokemon;
-      // this.updateTypeColorForSelectedPokemon();
+      this.updateTypeColorForSelectedPokemon();
+    }
+  }
+
+  async updateTypeColorForSelectedPokemon(): Promise<void> {
+    this.typeColor = await this.getTypeColorForSelectedPokemon();
+  }
+
+  async getTypeColorForSelectedPokemon(): Promise<string> {
+    if (this.selectedPokemon && this.selectedPokemon.types && this.selectedPokemon.types.length > 0) {
+      const typeName = this.selectedPokemon.types[0].type.name;
+      return await this.pokemonService.getTypeColor(typeName);
+    } else {
+      return 'gray';
     }
   }
 

@@ -1,4 +1,3 @@
-//Landing-page.component.ts
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { CardComponent } from '../card/card.component';
